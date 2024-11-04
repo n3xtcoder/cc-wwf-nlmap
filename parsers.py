@@ -28,7 +28,19 @@ prompt_template = PromptTemplate(
 model = ChatOpenAI(api_key=openai_key, model="gpt-4o")
 llm_chain = prompt_template | model | JsonOutputParser()
 
-def parse_data(message: str) -> tuple[BoundingBox, datetime, Dataset]:
+# use an llm
+# you might need to add some percentage
+def extract_bounds(message: str) -> BoundingBox:
+    """Extracts the bounding box from a prompt."""
+    pass
+
+# extract the time
+def extract_time(message: str) -> datetime:
+    """Extracts the time from a prompt."""
+    pass
+
+# extract the dataset
+def translate_nl_to_map_data(message: str) -> tuple[BoundingBox, datetime, Dataset]:
     """Parses the bounding box, time, and dataset from a prompt."""
     response = llm_chain.invoke(input={"message": message})
     bounding_box = (

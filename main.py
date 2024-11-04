@@ -1,5 +1,5 @@
 import streamlit as st
-from parsers import parse_data
+from parsers import translate_nl_to_map_data
 from display import display_data
 
 def main():
@@ -13,7 +13,7 @@ def main():
     chat = st.text_area(label="Your question here:", placeholder="Ask me anything...")
 
     if st.button("Send"):
-        data = parse_data(chat)
+        data = translate_nl_to_map_data(chat)
         display_data(data)
 
 if __name__ == "__main__":
