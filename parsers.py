@@ -7,7 +7,7 @@ from config import BoundingBox, Dataset, openai_key, DatasetNotFoundError
 from prompts import bounding_box_prompt, datetime_prompt, dataset_prompt
 from data import datasets
 
-model = ChatOpenAI(api_key=openai_key, model="gpt-4o")
+model = ChatOpenAI(api_key=openai_key, model="gpt-4o", temperature=0.5)
 
 def extract_bounds(message: str) -> BoundingBox | None:
     """Extracts the bounding box from a prompt."""
