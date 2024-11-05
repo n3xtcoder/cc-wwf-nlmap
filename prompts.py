@@ -19,6 +19,8 @@ Here are some examples:
 
 4. If the message is: "You mama speaks 3 languages", return: "No geographical location found in the message."
 
+5. If the message is: "Show me the Carbon Monoxide from Sentinel 5P for the globe in 2020 and 2023", return "No geographical location found in the message.".
+
 Here is the user's message:
 {message}
 
@@ -34,6 +36,8 @@ If the message includes a date, extract it and provide it in the YYYY-MM-DD form
 
 If the message does not contain any specific date, year or similar, return a unified output indicating that no date was found in the message. If a longer time period is mentioned, such as a month or year, you should return the middle day of that period.
 
+If the message contains more than one date, you should return the first date found.
+
 Here are some examples:
 
 1. If the message is: "Show me the latest Sentinel 2 image from Berlin", return: "No date found in the message."
@@ -48,4 +52,24 @@ Here is the user's message:
 {message}
 
 Return the date in YYYY-MM-DD format if a specific date is found; otherwise, return a unified output indicating that no date was found.
+"""
+
+dataset_prompt = """
+You are an expert in geographical data mapping and analysis. Your task is to examine the user's message and determine whether it refers to any of the available datasets listed below.
+
+**Available Datasets:**
+
+{dataset_descriptions}
+
+**Instructions:**
+
+- If the user's message refers to one of these datasets, identify the dataset and return its **Image ID** (e.g., "COPERNICUS/S2_HARMONIZED").
+- Ensure that the dataset you select matches the user's request precisely.
+- If the message does not correspond to any of the available datasets, return "No dataset found in the message.".
+
+**Here is the user's message:**
+
+{message}
+
+**Return the dataset's Image ID if a matching dataset was found; otherwise, return "No dataset found in the message.".**
 """

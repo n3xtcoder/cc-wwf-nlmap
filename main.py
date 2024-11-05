@@ -1,7 +1,7 @@
 import streamlit as st
 from parsers import translate_nl_to_map_data
 from display import display_data
-from config import BoundingBoxNotFoundError
+from config import DatasetNotFoundError
 
 def main():
     st.set_page_config(layout="centered", page_title="Chat Assistant")
@@ -16,8 +16,9 @@ def main():
     if st.button("Send"):
         try:
             data = translate_nl_to_map_data(chat)
-        except BoundingBoxNotFoundError:
-            st.error("No geography could be found in the message.")
+        except DatasetNotFoundError as e:
+            print(f"Error: {e}")
+            st.error("No available dataset could be mapped from the contents of the message.")
             return
         
         display_data(data)
