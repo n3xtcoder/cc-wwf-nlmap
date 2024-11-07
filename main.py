@@ -4,14 +4,13 @@ from display import display_data
 from config import DatasetNotFoundError
 
 def main():
-    st.set_page_config(layout="centered", page_title="Chat Assistant")
-    st.title("Chat Assistant")
-    st.write("Hello! :wave: I'm here to chat with you. Ask me anything below!")
+    st.set_page_config(layout="centered", page_title="NL to Map")
+    st.title("NL to Map Data Chat Assistant")
 
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = ""
 
-    chat = st.text_area(label="Your question here:", placeholder="Ask me anything...")
+    chat = st.text_area(label="Your question here:", placeholder="What do you want to show ...")
 
     if st.button("Send"):
         try:

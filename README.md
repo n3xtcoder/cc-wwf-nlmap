@@ -5,6 +5,7 @@
 - A GEE account
 - Python (v3.12.7) installed
 - `make` utility installed
+- OpenAI API key
 
 ## Setup
 
