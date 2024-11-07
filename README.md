@@ -39,6 +39,10 @@ With the virtual environment activated, install the necessary packages:
 pip install -r requirements.txt
 ```
 
+### 4. Add environment variables
+
+Copy the contents of the file named `.env.example` and past it into a newly file named `.env`. Add your OpenAI API key to the file.
+
 ## Usage
 
 Start the Server
